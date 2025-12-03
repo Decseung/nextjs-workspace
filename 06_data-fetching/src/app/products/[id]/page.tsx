@@ -1,11 +1,11 @@
 import Product from "@/types";
 
 interface DetailPageProps {
-  params: Promise<{ id: number }>; // ❌ Promise 제거
+  params: Promise<{ id: string }>;
 }
 
-async function getProducts(): Promise<Product[]> {
-  const response = await fetch("http://localhost:4000/products", {
+async function getProducts(id: string): Promise<Product> {
+  const response = await fetch(`http://localhost:4000/products/${id}`, {
     cache: "no-store",
   });
   if (!response.ok) throw new Error("데이터 불러오기 실패!");
@@ -16,17 +16,17 @@ async function getProducts(): Promise<Product[]> {
 }
 
 export default async function Page({ params }: DetailPageProps) {
-  const { id } = await params; // await 제거
-  const datas = await getProducts();
-  const findData = datas.find((data) => data.id === id);
+  const { id } = await params;
+  const datas = await getProducts(id);
 
   return (
     <div>
-      {findData ? (
+      {datas ? (
         <>
-          <h1>{findData.name}</h1>
-          <p>{findData.price}원</p>
-          <p>재고: {findData.stock}개</p>
+          <h2 className="text-2xl font-bold"> 상품 상세</h2>
+          <p>{datas.name}</p>
+          <p>{datas.price.toLocaleString()}원</p>
+          <p>재고: {datas.stock}개</p>
         </>
       ) : (
         <p>상품을 찾을 수 없습니다.</p>
