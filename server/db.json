@@ -21,6 +21,7 @@
       "title": "Next.js 16 학습 중",
       "content": "서버 액션 너무 편하네요.",
       "userId": 1,
+      "author": "홍길동",
       "createdAt": "2025-05-01T09:00:00.000Z"
     },
     {
@@ -28,7 +29,16 @@
       "title": "관리자 필독 공지",
       "content": "게시판 이용 수칙입니다.",
       "userId": 2,
+      "author": "관리자",
       "createdAt": "2025-05-02T10:00:00.000Z"
+    },
+    {
+      "title": "신규 글 - 수정",
+      "content": "내용내용 - 수정",
+      "userId": 1,
+      "author": "홍길동",
+      "createdAt": "2025-12-05T01:42:09.259Z",
+      "id": 3
     }
   ]
 }
